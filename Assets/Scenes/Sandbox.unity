@@ -393,6 +393,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Landing Pod
       objectReference: {fileID: 0}
+    - target: {fileID: 9055271797957253938, guid: 3fd7eff92e79c426aa551355eb119db6, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fd7eff92e79c426aa551355eb119db6, type: 3}
 --- !u!1001 &1063787163415871498
@@ -563,6 +567,10 @@ PrefabInstance:
     - target: {fileID: 9055271797957253938, guid: 3fd7eff92e79c426aa551355eb119db6, type: 3}
       propertyPath: m_Name
       value: 'Launch Pad '
+      objectReference: {fileID: 0}
+    - target: {fileID: 9055271797957253938, guid: 3fd7eff92e79c426aa551355eb119db6, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fd7eff92e79c426aa551355eb119db6, type: 3}

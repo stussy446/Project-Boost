@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     Rigidbody rb;
-    Vector3 newVector;
+    AudioSource thrustSound;
 
     // handles the thrust speed 
     [SerializeField] float yThrust = 1f;
@@ -18,11 +18,12 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        thrustSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {   
         ProcessThrust();
         ProcessRotation();
     }
@@ -32,7 +33,18 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
+
             rb.AddRelativeForce(Vector3.up * yThrust * Time.deltaTime);
+            if (!thrustSound.isPlaying)
+            {
+                thrustSound.Play(); 
+            }
+
+        }
+        else
+        {
+            
+            thrustSound.Stop();
         }
     }
 
