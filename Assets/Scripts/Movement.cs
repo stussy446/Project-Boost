@@ -54,8 +54,9 @@ public class Movement : MonoBehaviour
    // rotates the rocket forward or back depending on if rotationThisFrame is positive or negative 
    void ApplyRotation(float rotationThisFrame)
     {
-
+        rb.freezeRotation = true;
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
+        rb.freezeRotation = false;
     }
 
 }
