@@ -9,6 +9,11 @@ public class Movement : MonoBehaviour
     [SerializeField] float yThrust = 1f;
     [SerializeField] float rotationThrust = 1f;
 
+    [SerializeField] ParticleSystem mainParticle;
+    [SerializeField] ParticleSystem leftParticle;
+    [SerializeField] ParticleSystem rightParticle;
+
+
     // Cache 
     Rigidbody rb;
     AudioSource audioSource;
@@ -31,18 +36,21 @@ public class Movement : MonoBehaviour
     void ProcessThrust()
     {
         if (Input.GetKey(KeyCode.Space))
-        {
-
-            rb.AddRelativeForce(Vector3.up * yThrust * Time.deltaTime);
-            if (!audioSource.isPlaying)
-            {
-                audioSource.PlayOneShot(thrustClip); 
-            }
-        }
+            EngageThrusters();
         else
         {
-            
             audioSource.Stop();
+        }
+    }
+
+    void EngageThrusters()
+    {
+        mainParticle.Play();
+
+        rb.AddRelativeForce(Vector3.up * yThrust * Time.deltaTime);
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(thrustClip);
         }
     }
 
@@ -51,18 +59,31 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            ApplyRotation(rotationThrust);
+            EngageRightThrust();
         }
 
         else if (Input.GetKey(KeyCode.D))
         {
-            ApplyRotation(-rotationThrust);
-
+            EngageLeftThrust();
         }
+        
     }
 
-   // rotates the rocket forward or back depending on if rotationThisFrame is positive or negative 
-   void ApplyRotation(float rotationThisFrame)
+    void EngageRightThrust()
+    {
+        rightParticle.Play();
+        ApplyRotation(rotationThrust);
+    }
+
+
+    void EngageLeftThrust()
+    {
+        leftParticle.Play();
+        ApplyRotation(-rotationThrust);
+    }
+
+    // rotates the rocket forward or back depending on if rotationThisFrame is positive or negative 
+    void ApplyRotation(float rotationThisFrame)
     {
         rb.freezeRotation = true;
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
