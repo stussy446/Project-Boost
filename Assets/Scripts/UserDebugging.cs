@@ -10,7 +10,7 @@ public class UserDebugging : MonoBehaviour
     void Update()
     {
         LoadNextLeveLImmediately();
-        CollisionOnOrOff();
+        CollisionController();
     }
 
     void LoadNextLeveLImmediately()
@@ -33,7 +33,7 @@ public class UserDebugging : MonoBehaviour
         }
     }
 
-    void CollisionOnOrOff()
+    void CollisionController()
     {
         if (Input.GetKey(KeyCode.C))
         {
